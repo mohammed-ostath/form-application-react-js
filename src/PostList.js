@@ -1,26 +1,11 @@
 import { Link } from "react-router-dom";
-import PostDetails from "./PostDetails";
-let posts = [
-  {
-    id: 1,
-    title: "Post 1",
-    body: "This is the body of post 1",
-  },
-  {
-    id: 2,
-    title: "Post 2",
-    body: "This is the body of post 2",
-  },
-  {
-    id: 3,
-    title: "Post 3",
-    body: "This is the body of post 3",
-  },
-];
+import { postsContext } from "./contexts/postsContext";
+import { useContext } from "react";
 export default function PostList() {
+  const posts = useContext(postsContext);
   let postList = posts.map((post) => {
     return (
-      <Link key={post.id} to="/PostDetails">
+      <Link key={post.id} to={`/posts/${post.id}`}>
         <div>
           <h1>{post.title}</h1>
         </div>
